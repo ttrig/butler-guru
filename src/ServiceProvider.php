@@ -2,6 +2,8 @@
 
 namespace Butler\Guru;
 
+use Illuminate\Foundation\Application as LaravelApplication;
+use Laravel\Lumen\Application as LumenApplication;
 use Bschmitt\Amqp\LumenServiceProvider;
 use Butler\Guru\Commands\ListenForEvents;
 use Butler\Guru\Commands\PublishEvent;
@@ -18,9 +20,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->configure('guru');
-
-        $driver = config('guru.driver');
+        $driver = config('guru.driver', 'file');
         if ($driver === 'file') {
             $this->app->bind('Butler\Guru\Drivers\Driver', FileDriver::class);
             if ($this->app->runningInConsole()) {
@@ -53,8 +53,21 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/amqp.php', 'amqp');
-
+        $this->setupConfig($this->app);
         app('events')->listen(GuruEvent::class, GuruDispatcher::class);
+    }
+
+    private function setupConfig($app)
+    {
+        $guruSource = realpath(__DIR__ . '/../config/guru.php');
+        $amqpSource = realpath(__DIR__ . '/../config/amqp.php');
+
+        if ($app instanceof LaravelApplication && $app->runningInConsole()) {
+            $this->publishes([$guruSource => config_path('guru.php')]);
+            $this->publishes([$amqpSource => config_path('amqp.php')]);
+        } elseif ($app instanceof LumenApplication) {
+            $app->configure('guru');
+            $this->mergeConfigFrom($amqpSource, 'amqp');
+        }
     }
 }
