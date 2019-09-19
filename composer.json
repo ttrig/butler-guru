@@ -21,11 +21,11 @@
     },
     "require": {
         "php": "^7.1",
-        "illuminate/support": "^5.6",
+        "illuminate/support": "5.6.*|5.7.*|5.8.*|^6.0",
         "bschmitt/laravel-amqp": "^1.2"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^7.0"
+        "phpunit/phpunit": "^7.0|^8.0"
     }
 }
