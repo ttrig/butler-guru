@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Laravel package auto-discovery
 
+### Changed
+
+- *BREAKING:* Moved config file `guru.php` to `butler.php`
+
 
 ## [0.2.1] - 2019-09-20
 

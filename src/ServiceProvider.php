@@ -20,7 +20,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $driver = config('guru.driver', 'file');
+        $driver = config('butler.guru.driver', 'file');
         if ($driver === 'file') {
             $this->app->bind('Butler\Guru\Drivers\Driver', FileDriver::class);
             if ($this->app->runningInConsole()) {
@@ -42,7 +42,7 @@ class ServiceProvider extends BaseServiceProvider
         }
 
         $this->app->bind(EventRouter::class, function () {
-            return new EventRouter(config('guru.events'));
+            return new EventRouter(config('butler.guru.events'));
         });
     }
 
@@ -59,14 +59,14 @@ class ServiceProvider extends BaseServiceProvider
 
     private function setupConfig($app)
     {
-        $guruSource = realpath(__DIR__ . '/../config/guru.php');
+        $guruSource = realpath(__DIR__ . '/../config/butler.php');
         $amqpSource = realpath(__DIR__ . '/../config/amqp.php');
 
         if ($app instanceof LaravelApplication && $app->runningInConsole()) {
-            $this->publishes([$guruSource => config_path('guru.php')]);
+            $this->publishes([$guruSource => config_path('butler.php')]);
             $this->publishes([$amqpSource => config_path('amqp.php')]);
         } elseif ($app instanceof LumenApplication) {
-            $app->configure('guru');
+            $app->configure('butler');
             $this->mergeConfigFrom($amqpSource, 'amqp');
         }
     }

@@ -19,18 +19,18 @@ return [
     'properties' => [
 
         'production' => [
-            'host' => env('GURU_HOST'),
-            'port' => env('GURU_PORT'),
-            'username' => env('GURU_USERNAME'),
-            'password' => env('GURU_PASSWORD'),
-            'vhost' => env('GURU_VHOST'),
+            'host' => env('BUTLER_GURU_HOST'),
+            'port' => env('BUTLER_GURU_PORT'),
+            'username' => env('BUTLER_GURU_USERNAME'),
+            'password' => env('BUTLER_GURU_PASSWORD'),
+            'vhost' => env('BUTLER_GURU_VHOST'),
             'connect_options' => [
                 'heartbeat' => 10,
                 'read_write_timeout' => 30
             ],
             'ssl_options' => [],
 
-            'exchange' => env('GURU_EXCHANGE'),
+            'exchange' => env('BUTLER_GURU_EXCHANGE'),
             'exchange_type' => 'topic',
             'exchange_passive' => false,
             'exchange_durable' => true,
@@ -54,8 +54,8 @@ return [
             'consumer_nowait' => false,
             'timeout' => 0,
             'persistent' => true,
-            'queue' => env('GURU_QUEUE'),
-            'routing' => env('GURU_ROUTING'),
+            'queue' => env('BUTLER_GURU_QUEUE'),
+            'routing' => env('BUTLER_GURU_ROUTING'),
         ],
     ],
 ];
