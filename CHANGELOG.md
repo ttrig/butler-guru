@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- "squizlabs/php_codesniffer" 3.5.2 to detect violations of [PSR12](https://www.php-fig.org/psr/psr-12/).
+
 
 ## [0.3.0] - 2019-11-04
 

@@ -8,7 +8,8 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class EventHandler implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     /**
      * @var string

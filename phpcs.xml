@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="GleSYS">
+    <description>GleSYS Custom ruleset</description>
+
+    <file>.</file>
+
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <rule ref="PSR12"></rule>
+
+    <rule ref="PSR1.Methods.CamelCapsMethodName">
+        <exclude-pattern>./tests</exclude-pattern>
+    </rule>
+
+    <arg name="colors"/>
+    <arg name="parallel=4"/>
+</ruleset>
