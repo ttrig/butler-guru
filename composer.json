@@ -28,7 +28,9 @@
     },
     "require": {
         "php": "^7.1",
+        "illuminate/bus": "5.6.*|5.7.*|5.8.*|^6.0",
         "illuminate/support": "5.6.*|5.7.*|5.8.*|^6.0",
+        "illuminate/queue": "5.6.*|5.7.*|5.8.*|^6.0",
         "bschmitt/laravel-amqp": "^1.2"
     },
     "require-dev": {
