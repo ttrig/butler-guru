@@ -1,6 +1,6 @@
 <?php
 
-function dispatch(object $object)
+function dispatch($object)
 {
     Butler\Guru\Tests\TestCase::$dispatched[] = $object;
 }
